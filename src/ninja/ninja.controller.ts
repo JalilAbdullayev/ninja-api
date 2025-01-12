@@ -9,13 +9,16 @@ import {
   Post,
   Put,
   Query,
+  UseGuards,
   ValidationPipe,
 } from '@nestjs/common';
 import { CreateNinjaDto } from './dto/create-ninja.dto';
 import { UpdateNinjaDto } from './dto/update-ninja.dto';
 import { Ninja, NinjaService } from './ninja.service';
+import { BeltGuard } from '../belt/belt.guard';
 
 @Controller('ninja')
+@UseGuards(BeltGuard)
 export class NinjaController {
   constructor(private readonly ninjaService: NinjaService) {}
 
